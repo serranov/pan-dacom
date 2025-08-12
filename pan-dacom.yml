@@ -15,43 +15,43 @@ topology:
   nodes:
     spine1-dc1:
       kind: nokia_srlinux
-      type: ixrd4
+      type: ixr-d4
       mgmt-ipv4: 172.20.20.11
       mgmt-ipv6: 2001:172:20:20::11
     spine2-dc1:
       kind: nokia_srlinux
-      type: ixrd4
+      type: ixr-d4
       mgmt-ipv4: 172.20.20.12
       mgmt-ipv6: 2001:172:20:20::12
     spine1-dc2:
       kind: nokia_srlinux
-      type: ixrd4
+      type: ixr-d4
       mgmt-ipv4: 172.20.20.13
       mgmt-ipv6: 2001:172:20:20::13
     spine2-dc2:
       kind: nokia_srlinux
-      type: ixrd4
+      type: ixr-d4
       mgmt-ipv4: 172.20.20.14
       mgmt-ipv6: 2001:172:20:20::14
 
     leaf1-dc1:
       kind: nokia_srlinux
-      type: ixrd2l
+      type: ixr-d2l
       mgmt-ipv4: 172.20.20.21
       mgmt-ipv6: 2001:172:20:20::21
     leaf2-dc1:
       kind: nokia_srlinux
-      type: ixrd2l
+      type: ixr-d2l
       mgmt-ipv4: 172.20.20.22
       mgmt-ipv6: 2001:172:20:20::22
     leaf1-dc2:
       kind: nokia_srlinux
-      type: ixrd2l
+      type: ixr-d2l
       mgmt-ipv4: 172.20.20.23
       mgmt-ipv6: 2001:172:20:20::23
     leaf2-dc2:
       kind: nokia_srlinux
-      type: ixrd2l
+      type: ixr-d2l
       mgmt-ipv4: 172.20.20.24
       mgmt-ipv6: 2001:172:20:20::24
 
