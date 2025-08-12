@@ -1,0 +1,56 @@
+apiVersion: protocols.eda.nokia.com/v1alpha1
+kind: DefaultBGPPeer
+metadata:
+  name: dci-ipv4-spine2-dc1-system0-spine2-dc2-system-0
+  namespace: clab-pan-dacom
+  labels: {}
+  annotations: {}
+spec:
+  bfd: true
+  dynamicNeighbor: false
+  exportPolicy:
+    - ibgp-export-policy-dc1
+  group: bgpgroup-ibgp-dci
+  importPolicy:
+    - ibgp-import-policy-dc1
+  interface: spine2-dc1-system0
+  interfaceKind: SYSTEMINTERFACE
+  ipv4Unicast:
+    enabled: false
+  l2VPNEVPN:
+    enabled: true
+    advertiseIPV6NextHops: null
+    maxReceivedRoutes: null
+  localAS:
+    autonomousSystem: 65501
+    prependGlobalAS: null
+    prependLocalAS: null
+  peerAS:
+    autonomousSystem: 65502
+  peerIP: 172.0.2.2
+  description: ''
+  peerInterfaceKind: ''
+  peerInterface: ''
+  dynamicNeighborAllowedPeerAS: []
+  localPreference: null
+  clusterID: ''
+  multiHopMaxHop: null
+  grStaleRouteTime: null
+  nextHopSelf: null
+  sendCommunityLarge: null
+  client: null
+  sendCommunityStandard: null
+  keychain: ''
+  ipv6Unicast:
+    enabled: null
+  timers:
+    holdTime: null
+    keepAlive: null
+    connectRetry: null
+    minimumAdvertisementInterval: null
+  asPathOptions:
+    removePrivateAS:
+      removePrivateASMode: ''
+  sendDefaultRoute:
+    addressFamily: []
+    exportPolicy: ''

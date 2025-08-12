@@ -1,0 +1,18 @@
+apiVersion: core.eda.nokia.com/v1
+kind: IndexAllocationPool
+metadata:
+  name: vni-pool
+  namespace: clab-pan-dacom
+  labels: {}
+  annotations: {}
+spec:
+  publishAllocations: true
+  segments:
+    - allocations:
+        - name: bd-mac-vrf-test
+          value: 1000
+        - name: rtr-ip-vrf-test
+          value: 2000
+      size: 4000
+      start: 200
+      uuid: ca9b9a3f-f68c-4a97-a1a3-a67a4c7dfe02

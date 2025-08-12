@@ -1,0 +1,108 @@
+name: pan-dacom
+prefix: ''
+
+mgmt:
+  network: pan-dacom
+  ipv4-subnet: 172.20.20.0/24
+  ipv6-subnet: 2001:172:20:20::0/64
+
+topology:
+  kinds:
+    nokia_srlinux:
+      image: ghcr.io/nokia/srlinux:24.10.4
+    linux:
+      image: ghcr.io/hellt/network-multitool
+  nodes:
+    spine1-dc1:
+      kind: nokia_srlinux
+      type: ixrd4
+      mgmt-ipv4: 172.20.20.11
+      mgmt-ipv6: 2001:172:20:20::11
+    spine2-dc1:
+      kind: nokia_srlinux
+      type: ixrd4
+      mgmt-ipv4: 172.20.20.12
+      mgmt-ipv6: 2001:172:20:20::12
+    spine1-dc2:
+      kind: nokia_srlinux
+      type: ixrd4
+      mgmt-ipv4: 172.20.20.13
+      mgmt-ipv6: 2001:172:20:20::13
+    spine2-dc2:
+      kind: nokia_srlinux
+      type: ixrd4
+      mgmt-ipv4: 172.20.20.14
+      mgmt-ipv6: 2001:172:20:20::14
+
+    leaf1-dc1:
+      kind: nokia_srlinux
+      type: ixrd2l
+      mgmt-ipv4: 172.20.20.21
+      mgmt-ipv6: 2001:172:20:20::21
+    leaf2-dc1:
+      kind: nokia_srlinux
+      type: ixrd2l
+      mgmt-ipv4: 172.20.20.22
+      mgmt-ipv6: 2001:172:20:20::22
+    leaf1-dc2:
+      kind: nokia_srlinux
+      type: ixrd2l
+      mgmt-ipv4: 172.20.20.23
+      mgmt-ipv6: 2001:172:20:20::23
+    leaf2-dc2:
+      kind: nokia_srlinux
+      type: ixrd2l
+      mgmt-ipv4: 172.20.20.24
+      mgmt-ipv6: 2001:172:20:20::24
+
+    client1-dc1:
+      kind: linux
+      mgmt-ipv4: 172.20.20.31
+      mgmt-ipv6: 2001:172:20:20::31
+      binds:
+        - ./configs/client1-dc1.sh:/tmp/client1-dc1.sh
+      exec:
+        - bash /tmp/client1-dc1.sh
+    client2-dc1:
+      kind: linux
+      mgmt-ipv4: 172.20.20.32
+      mgmt-ipv6: 2001:172:20:20::32
+      binds:
+        - ./configs/client2-dc1.sh:/tmp/client2-dc1.sh
+      exec:
+        - bash /tmp/client2-dc1.sh
+    client1-dc2:
+      kind: linux
+      mgmt-ipv4: 172.20.20.33
+      mgmt-ipv6: 2001:172:20:20::33
+      binds:
+        - ./configs/client1-dc2.sh:/tmp/client1-dc2.sh
+      exec:
+        - bash /tmp/client1-dc2.sh
+    client2-dc2:
+      kind: linux
+      mgmt-ipv4: 172.20.20.34
+      mgmt-ipv6: 2001:172:20:20::34
+      binds:
+        - ./configs/client2-dc2.sh:/tmp/client2-dc2.sh
+      exec:
+        - bash /tmp/client2-dc2.sh
+
+  links:
+    - endpoints: ["leaf1-dc1:e1-56", "spine1-dc1:e1-1"]
+    - endpoints: ["leaf1-dc1:e1-55", "spine2-dc1:e1-1"]
+    - endpoints: ["leaf2-dc1:e1-56", "spine1-dc1:e1-2"]
+    - endpoints: ["leaf2-dc1:e1-55", "spine2-dc1:e1-2"]
+
+    - endpoints: ["leaf1-dc2:e1-56", "spine1-dc2:e1-1"]
+    - endpoints: ["leaf1-dc2:e1-55", "spine2-dc2:e1-1"]
+    - endpoints: ["leaf2-dc2:e1-56", "spine1-dc2:e1-2"]
+    - endpoints: ["leaf2-dc2:e1-55", "spine2-dc2:e1-2"]
+
+    - endpoints: ["spine1-dc1:e1-36", "spine1-dc2:e1-36"]
+    - endpoints: ["spine2-dc1:e1-36", "spine2-dc2:e1-36"]
+
+    - endpoints: ["client1-dc1:eth1", "leaf1-dc1:e1-1"]
+    - endpoints: ["client2-dc1:eth1", "leaf2-dc1:e1-1"]
+    - endpoints: ["client1-dc2:eth1", "leaf1-dc2:e1-1"]
+    - endpoints: ["client2-dc2:eth1", "leaf2-dc2:e1-1"]

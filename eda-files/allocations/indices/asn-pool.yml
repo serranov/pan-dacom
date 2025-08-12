@@ -1,0 +1,26 @@
+apiVersion: core.eda.nokia.com/v1
+kind: IndexAllocationPool
+metadata:
+  name: asn-pool
+  namespace: clab-pan-dacom
+  labels: {}
+  annotations: {}
+spec:
+  publishAllocations: true
+  segments:
+    - allocations:
+        - name: dc1-spine
+          value: 100
+        - name: dc1-leaf-leaf1-dc1
+          value: 101
+        - name: dc1-leaf-leaf2-dc1
+          value: 102
+        - name: dc2-spine
+          value: 200
+        - name: dc2-leaf-leaf1-dc2
+          value: 201
+        - name: dc2-leaf-leaf2-dc2
+          value: 202
+      size: 3000
+      start: 100
+      uuid: fc6d97f0-cdca-48cd-9cb6-0e7518930f23

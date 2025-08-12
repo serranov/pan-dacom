@@ -1,0 +1,53 @@
+apiVersion: protocols.eda.nokia.com/v1alpha1
+kind: DefaultBGPGroup
+metadata:
+  name: bgpgroup-ebgp-dci
+  namespace: clab-pan-dacom
+  labels: {}
+  annotations: {}
+spec:
+  bfd: true
+  ipv4Unicast:
+    enabled: true
+    advertiseIPV6NextHops: null
+    receiveIPV6NextHops: null
+    maxReceivedRoutes: null
+  l2VPNEVPN:
+    enabled: false
+    advertiseIPV6NextHops: null
+    maxReceivedRoutes: null
+  timers:
+    connectRetry: 10
+    holdTime: 3
+    keepAlive: 1
+    minimumAdvertisementInterval: 1
+  description: ''
+  localPreference: null
+  exportPolicy: []
+  importPolicy: []
+  clusterID: ''
+  multiHopMaxHop: null
+  grStaleRouteTime: null
+  nextHopSelf: null
+  sendCommunityLarge: null
+  client: null
+  sendCommunityStandard: null
+  keychain: ''
+  ipv6Unicast:
+    enabled: null
+    maxReceivedRoutes: null
+  peerAS:
+    autonomousSystem: null
+  localAS:
+    autonomousSystem: null
+    prependGlobalAS: null
+    prependLocalAS: null
+  asPathOptions:
+    allowOwnAS: null
+    removePrivateAS:
+      ignorePeerAS: null
+      leadingOnly: null
+      removePrivateASMode: ''
+  sendDefaultRoute:
+    addressFamily: []
+    exportPolicy: ''

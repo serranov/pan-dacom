@@ -1,0 +1,19 @@
+apiVersion: core.eda.nokia.com/v1
+kind: IndexAllocationPool
+metadata:
+  name: tunnel-index-pool
+  namespace: clab-pan-dacom
+  labels: {}
+  annotations: {}
+spec:
+  publishAllocations: true
+  segments:
+    - size: 4000
+      start: 500
+      allocations:
+        - name: bd-mac-vrf-test
+          value: 1000
+        - name: rtr-ip-vrf-test
+          value: 2000
+      reservations: []
+      uuid: 4d721ac2-895c-4890-bd63-cf79987d4c9a

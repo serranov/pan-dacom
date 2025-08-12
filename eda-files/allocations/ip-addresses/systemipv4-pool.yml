@@ -1,0 +1,28 @@
+apiVersion: core.eda.nokia.com/v1
+kind: IPAllocationPool
+metadata:
+  name: systemipv4-pool
+  namespace: clab-pan-dacom
+  labels: {}
+  annotations: {}
+spec:
+  publishAllocations: true
+  segments:
+    - allocations:
+        - name: dc1-leaf-leaf1-dc1
+          value: 172.0.1.11
+        - name: dc1-leaf-leaf2-dc1
+          value: 172.0.1.12
+        - name: dc1-spine-spine1-dc1
+          value: 172.0.1.1
+        - name: dc1-spine-spine2-dc1
+          value: 172.0.1.2
+        - name: dc2-leaf-leaf1-dc2
+          value: 172.0.2.21
+        - name: dc2-leaf-leaf2-dc2
+          value: 172.0.2.22
+        - name: dc2-spine-spine1-dc2
+          value: 172.0.2.1
+        - name: dc2-spine-spine2-dc2
+          value: 172.0.2.2
+      subnet: 172.0.0.0/16

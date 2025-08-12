@@ -1,0 +1,22 @@
+apiVersion: routing.eda.nokia.com/v1alpha1
+kind: DefaultInterface
+metadata:
+  name: interface-spine2-dc1-ethernet-1-36
+  namespace: clab-pan-dacom
+  labels: {}
+  annotations: {}
+spec:
+  bfd:
+    desiredMinTransmitInt: 100000
+    detectionMultiplier: 3
+    enabled: true
+    minEchoReceiveInterval: 0
+    requiredMinReceive: 100000
+  defaultRouter: router-spine2-dc1
+  interface: spine2-dc1-ethernet-1-36
+  ipv4Addresses:
+    - ipPrefix: 30.0.0.32/31
+  vlanID: null
+  ipMTU: null
+  ipv6Addresses: []
+  unnumbered: ''

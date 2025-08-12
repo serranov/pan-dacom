@@ -1,0 +1,109 @@
+apiVersion: services.eda.nokia.com/v1alpha1
+kind: VirtualNetwork
+metadata:
+  name: dci-test
+  namespace: clab-pan-dacom
+  labels: {}
+  annotations: {}
+spec:
+  bridgeDomains:
+    - name: mac-vrf-test
+      spec:
+        eviPool: evi-pool
+        exportTarget: target:1000:1000
+        importTarget: target:1000:1000
+        macAging: 600
+        macDuplicationDetection:
+          action: StopLearning
+          enabled: true
+          holdDownTime: 9
+          monitoringWindow: 3
+          numMoves: 5
+        tunnelIndexPool: tunnel-index-pool
+        type: EVPNVXLAN
+        vniPool: vni-pool
+        l2proxyARPND: {}
+  bridgeInterfaces:
+    - name: leaf1-dc1-ethernet-1-1
+      spec:
+        bridgeDomain: mac-vrf-test
+        interface: leaf1-dc1-ethernet-1-1
+        vlanID: '10'
+    - name: leaf2-dc1-ethernet-1-1
+      spec:
+        bridgeDomain: mac-vrf-test
+        interface: leaf2-dc1-ethernet-1-1
+        vlanID: '10'
+    - name: leaf1-dc2-ethernet-1-1
+      spec:
+        bridgeDomain: mac-vrf-test
+        interface: leaf1-dc2-ethernet-1-1
+        vlanID: '20'
+    - name: leaf2-dc2-ethernet-1-1
+      spec:
+        bridgeDomain: mac-vrf-test
+        interface: leaf2-dc2-ethernet-1-1
+        vlanID: '20'
+  irbInterfaces:
+    - name: irb-test
+      spec:
+        arpTimeout: 0
+        bridgeDomain: mac-vrf-test
+        evpnRouteAdvertisementType:
+          arpDynamic: true
+          arpStatic: true
+          ndDynamic: false
+          ndStatic: false
+        hostRoutePopulate:
+          dynamic: true
+          evpn: true
+          static: true
+        ipAddresses:
+          - ipv4Address:
+              ipPrefix: 192.168.0.254/24
+              primary: true
+            node: leaf1-dc1
+          - ipv4Address:
+              ipPrefix: 192.168.0.254/24
+              primary: true
+            node: leaf2-dc1
+          - ipv4Address:
+              ipPrefix: 192.168.0.254/24
+              primary: true
+            node: leaf1-dc2
+          - ipv4Address:
+              ipPrefix: 192.168.0.254/24
+              primary: true
+            node: leaf2-dc2
+        ipMTU: 1500
+        learnUnsolicited: BOTH
+        router: ip-vrf-test
+  routers:
+    - name: ip-vrf-test
+      spec:
+        eviPool: evi-pool
+        exportTarget: target:2000:2000
+        importTarget: target:2000:2000
+        tunnelIndexPool: tunnel-index-pool
+        type: EVPNVXLAN
+        vniPool: vni-pool
+        nodeSelector: []
+        routeLeaking: {}
+        ipLoadBalancing:
+          prefix: []
+        bgp:
+          ipAliasNexthops: []
+          ipv4Unicast:
+            multipath: null
+          ipv6Unicast:
+            multipath: null
+  routedInterfaces: []
+  vlans: []
+  protocols:
+    staticRoutes: []
+    bgp:
+      bgpGroups: []
+      bgpPeers: []
+    routingPolicies:
+      policies: []
+      prefixSets: []

@@ -1,0 +1,13 @@
+apiVersion: core.eda.nokia.com/v1
+kind: SubnetAllocationPool
+metadata:
+  name: ipv4-pool
+  namespace: clab-pan-dacom
+  labels: {}
+  annotations: {}
+spec:
+  publishAllocations: true
+  segments:
+    - subnet: 30.0.0.0/8
+      subnetLength: 31
+      uuid: 627724f9-d6ed-4d58-926a-954732b11cea
