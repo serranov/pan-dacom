@@ -19,7 +19,11 @@ After all tools have been installed, let's start by deploying the Containerlab t
 clab deploy -t pan-dacom.yml
 ```
 
-The lab deployment should be ready in few minutes, so you can SSH into the nodes. However, they don't have any startup configuration, so they will be empty. Let's onboard all nodes into EDA by running the following command (replace "EDA-IP" and "parent-path" by your own values):
+<p align="center">
+  <img src="pan-dacom-topology.png">
+</p>
+
+The lab deployment should be ready in a minute and you can start interacting with the nodes. However, they don't have any startup configuration, so they will be empty. Let's onboard all nodes into EDA by running the following command (replace "EDA-IP" and "parent-path" by your own values):
 
 ```
 clab-connector integrate --eda-url https://<EDA-IP>:9443 -t <parent-path>/clab-pan-dacom/topology-data.json
